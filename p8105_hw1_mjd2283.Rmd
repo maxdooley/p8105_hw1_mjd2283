@@ -8,9 +8,24 @@ output: html_document
 ```{r penguins}
 data("penguins", package = "palmerpenguins")
 summary(penguins)
+nrow(penguins)
+ncol(penguins)
+``` 
+```{r}
+library(tidyverse)
+mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
+#a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds.
 
+EXTRA
 
+* The mean of the sample is `r mean(pull(la_df, norm_samp))`
+* The median of the sample is `r median(pull(la_df, norm_samp))`
+* The standard deviation of the sample is `r sd(pull(la_df, norm_samp))`
+
+In this dataset, the names of variables include species, island, bill length (mm), bill depth (mm), flipper length (mm), body mass (g), sex, and year
+
+There are 344 rows and 8 columns.
 
 
 ## R Markdown
