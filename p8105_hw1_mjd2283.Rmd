@@ -20,7 +20,15 @@ na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values shou
 ```{r}
 ## scatterplot of x and y
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+getwd()
+ggsave("penguins_plot.pdf", height = 4, width = 6)
 ```
+```{r}
+
+
+
+```
+
 
 
 
