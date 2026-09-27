@@ -8,28 +8,24 @@ output: github_document
 ## Problem 1
 
 ```{r penguins}
+library(tidyverse)
+
 data("penguins", package = "palmerpenguins")
 summary(penguins)
-nrow(penguins)
-ncol(penguins)
-``` 
-```{r}
-library(tidyverse)
-mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
-In this dataset, the names of categories include `r levels(pull(penguins,species))`, and  `r levels(pull(penguins,island))`.
+In this dataset, the names of species include `r levels(pull(penguins,species))`, and the names of islands include `r levels(pull(penguins,island))`.
 
-Sex is `r levels(pull(penguins,sex))`
+Sex is either (if not NA): `r levels(pull(penguins,sex))`.
 
-The median length of bills is `r median(pull(penguins,bill_length_mm))` mm.
+The median length of bills is `r median(pull(penguins,bill_length_mm), na.rm = TRUE)` mm.
 
-The median length of flippers is `r median(pull(penguins,flipper_length_mm)` mm.
+The median length of flippers is `r median(pull(penguins,flipper_length_mm), na.rm = TRUE)` mm.
 
-The median body mass weight is `r median(pull(penguins,body_mass_g))` g
+The median body mass weight is `r median(pull(penguins,body_mass_g), na.rm = TRUE)` g.
 
-The min year is `r min(pull(penguins,year))` and the max is `r max(pull(penguins,year))`
+The min year is `r min(pull(penguins,year))` and the max is `r max(pull(penguins,year))`.
 
-Used AI to show how to use r in line code to show names/values. r levels gets the factors in the dataset. For the numeric values, I used median values besides year. I reported the mean flipper length below as well. 
+Used AI to show how to use r in line code to show names/values. R levels gets the categories of factors in the dataset. For the numeric values, I used median values besides year. I reported the mean flipper length below as well. 
 
 There are `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
@@ -38,17 +34,15 @@ The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TR
 na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds. Used AI to figure out this argument usage
 
 ```{r}
-## scatterplot of x and y
+## scatterplot of bill length (X) and flipper length (y)
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
-getwd()
 ggsave("penguins_plot.pdf", height = 4, width = 6)
 ```
 
 Used ggplot to do the scatter plot and add color, and then saved a pdf using ggsave. 
 
 ## Problem 2
-
 
 ```{r}
 
