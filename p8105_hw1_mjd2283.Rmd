@@ -2,7 +2,7 @@
 title: "p8105_hw1_mjd2283"
 author: "Max"
 date: "2026-09-23"
-output: html_document
+output: github_document
 ---
 
 ```{r penguins}
@@ -15,6 +15,20 @@ ncol(penguins)
 library(tidyverse)
 mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
+In this dataset, the names of categories include `r levels(pull(penguins,species))`, and  `r levels(pull(penguins,island))`.
+
+The min length of bills (mm) is `r min(pull(penguins,bill_length_mm))`, and the max is `r max(pull(penguins,bill_length_mm))`
+
+
+
+`r levels(pull(penguins,bill_depth_mm))`, `r levels(pull(penguins,flipper_length_mm)`, `r levels(pull(penguins,body_mass_g))`, `r levels(pull(penguins,sex))`, `r levels(pull(penguins,year))`
+
+Used AI to show how to use r in line code to show names/values. r levels gets the factos in the dataset. For the numeric values, I used min and max. 
+
+There are `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
+The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
+
 na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds. Used AI to figure out this argument usage
 
 ## Problem 1
@@ -22,18 +36,14 @@ na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values shou
 ```{r}
 ## scatterplot of x and y
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
 getwd()
 ggsave("penguins_plot.pdf", height = 4, width = 6)
 ```
 
+Used ggplot to do the scatter plot and add color, and then saved a pdf using ggsave. 
+
 ## Problem 2
-
- Create a data frame comprised of:
-
-
-Hint: to take the mean of a variable in a dataframe, you need to pull the variable out of the dataframe. Try loading the tidyverse and using the pull function.
-
-In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
 
 
 ```{r}
@@ -67,32 +77,17 @@ as.numeric(pull(problem2_df,vec_character))
 as.numeric(pull(problem2_df,vec_factor))
 ```
 
+For the vec_logical, it gives 0 and 1, so the statement is either False (0) or True (1).
+
+For the other ones vec_character and vec_factor, these are NA since these values can't turn into numbers. 
 
 
-EXTRA
-
-* The mean of the sample is `r mean(pull(la_df, norm_samp))`
-* The median of the sample is `r median(pull(la_df, norm_samp))`
-* The standard deviation of the sample is `r sd(pull(la_df, norm_samp))`
-
-In this dataset, the names of variables include species, island, bill length (mm), bill depth (mm), flipper length (mm), body mass (g), sex, and year
-
-There are 344 rows and 8 columns.
 
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
