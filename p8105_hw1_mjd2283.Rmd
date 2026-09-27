@@ -49,22 +49,21 @@ Used ggplot to do the scatter plot and add color, and then saved a pdf using ggs
 set.seed(1)
 
 problem2_df = tibble(
-  vec_numeric= rnorm(10),
-  vec_logical= c(vec_numeric>TRUE),
-  vec_character= c("It", "is", "cold", "outside", "but", "I", "am", "inside", "right", "now"),
-  vec_factor = c("fast", "slow", "fast", "fast", "medium", "fast", "fast", "medium", "slow", "slow")
+  vec_numeric = rnorm(10),
+  vec_logical = c(vec_numeric > 0),
+  vec_character = c("It", "is", "cold", "outside", "but", "I", "am", "inside", "right", "now"),
+  vec_factor = factor(c("fast", "slow", "fast", "fast", "medium", "fast", "fast", "medium", "slow", "slow"))
 )
 
 print.data.frame(problem2_df)
 
-library(tidyverse)
 mean(pull(problem2_df,vec_numeric))
 mean(pull(problem2_df,vec_logical))
 mean(pull(problem2_df,vec_character))
 mean(pull(problem2_df,vec_factor))
 
 ```
-I already loaded tidyverse in the first coding section. But put it above again since HW mentioned it
+Vec_numeric and vec_logical means worked while vec_character and vec_factor means did not work.
 
 Used print.data.frame since I wanted to see the results.
 
@@ -75,17 +74,10 @@ as.numeric(pull(problem2_df,vec_character))
 as.numeric(pull(problem2_df,vec_factor))
 ```
 
-For the vec_logical, it gives 0 and 1, so the statement is either False (0) or True (1).
+For the vec_logical, it gives 0 and 1. As numeric works here since R treats false as 0 and true as 1. 
 
-For the other ones vec_character and vec_factor, these are NA since these values can't turn into numbers. 
+For vec_character, these are NA since these values can't turn into numbers. 
 
-
-
-
-
-
-
-
-
+For vec_factor, it gives numbers 1, 2, and 3 representing the three levels present. Mean doesn't work though since these numbers are labels and not actual numerical data. 
 
 
