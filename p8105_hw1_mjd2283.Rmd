@@ -13,17 +13,19 @@ library(tidyverse)
 data("penguins", package = "palmerpenguins")
 summary(penguins)
 ```
-In this dataset, the names of species include `r levels(pull(penguins,species))`, and the names of islands include `r levels(pull(penguins,island))`.
+I used summary( ) since I wanted to see the dataset.
 
-Sex is either (if not NA): `r levels(pull(penguins,sex))`.
+In this dataset, the names of species include `r levels(pull(penguins, species))`, and the names of islands include `r levels(pull(penguins, island))`.
 
-The median length of bills is `r median(pull(penguins,bill_length_mm), na.rm = TRUE)` mm.
+Sex is either: `r levels(pull(penguins, sex))` (if not NA).
 
-The median length of flippers is `r median(pull(penguins,flipper_length_mm), na.rm = TRUE)` mm.
+The median length of bills is `r median(pull(penguins, bill_length_mm), na.rm = TRUE)` mm.
 
-The median body mass weight is `r median(pull(penguins,body_mass_g), na.rm = TRUE)` g.
+The median length of flippers is `r median(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
 
-The min year is `r min(pull(penguins,year))` and the max is `r max(pull(penguins,year))`.
+The median body mass weight is `r median(pull(penguins, body_mass_g), na.rm = TRUE)` g.
+
+The min year is `r min(pull(penguins, year))` and the max is `r max(pull(penguins, year))`.
 
 Used AI to show how to use r in line code to show names/values. R levels gets the categories of factors in the dataset. For the numeric values, I used median values besides year. I reported the mean flipper length below as well. 
 
@@ -55,29 +57,26 @@ problem2_df = tibble(
   vec_factor = factor(c("fast", "slow", "fast", "fast", "medium", "fast", "fast", "medium", "slow", "slow"))
 )
 
-print.data.frame(problem2_df)
-
-mean(pull(problem2_df,vec_numeric))
-mean(pull(problem2_df,vec_logical))
-mean(pull(problem2_df,vec_character))
-mean(pull(problem2_df,vec_factor))
+mean(pull(problem2_df, vec_numeric))
+mean(pull(problem2_df, vec_logical))
+mean(pull(problem2_df, vec_character))
+mean(pull(problem2_df, vec_factor))
 
 ```
 Vec_numeric and vec_logical means worked while vec_character and vec_factor means did not work.
 
-Used print.data.frame since I wanted to see the results.
-
 
 ```{r, results = "hide"}
-as.numeric(pull(problem2_df,vec_logical))
-as.numeric(pull(problem2_df,vec_character))
-as.numeric(pull(problem2_df,vec_factor))
+as.numeric(pull(problem2_df, vec_logical))
+as.numeric(pull(problem2_df, vec_character))
+as.numeric(pull(problem2_df, vec_factor))
 ```
+
+Using results = "hide" in the R markdown chunk shows the chunk and not the output. 
 
 For the vec_logical, it gives 0 and 1. As numeric works here since R treats false as 0 and true as 1. 
 
 For vec_character, these are NA since these values can't turn into numbers. 
 
 For vec_factor, it gives numbers 1, 2, and 3 representing the three levels present. Mean doesn't work though since these numbers are labels and not actual numerical data. 
-
 
