@@ -15,7 +15,9 @@ ncol(penguins)
 library(tidyverse)
 mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
-na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds.
+na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds. Used AI to figure out this argument usage
+
+## Problem 1
 
 ```{r}
 ## scatterplot of x and y
@@ -23,12 +25,47 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)
 getwd()
 ggsave("penguins_plot.pdf", height = 4, width = 6)
 ```
+
+## Problem 2
+
+ Create a data frame comprised of:
+
+
+Hint: to take the mean of a variable in a dataframe, you need to pull the variable out of the dataframe. Try loading the tidyverse and using the pull function.
+
+In some cases, you can explicitly convert variables from one type to another. Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens, and why? Does this help explain what happens when you try to take the mean?
+
+
 ```{r}
 
+set.seed(1)
 
+problem2_df = tibble(
+  vec_numeric= rnorm(10),
+  vec_logical= c(vec_numeric>TRUE),
+  vec_character= c("It", "is", "cold", "outside", "but", "I", "am", "inside", "right", "now"),
+  vec_factor = c("fast", "slow", "fast", "fast", "medium", "fast", "fast", "medium", "slow", "slow")
+)
+
+print.data.frame(problem2_df)
+
+library(tidyverse)
+mean(pull(problem2_df,vec_numeric))
+mean(pull(problem2_df,vec_logical))
+mean(pull(problem2_df,vec_character))
+mean(pull(problem2_df,vec_factor))
 
 ```
+I already loaded tidyverse in the first coding section. But put it above again since HW mentioned it
 
+Used print.data.frame since I wanted to see the results.
+
+
+```{r, results = "hide"}
+as.numeric(pull(problem2_df,vec_logical))
+as.numeric(pull(problem2_df,vec_character))
+as.numeric(pull(problem2_df,vec_factor))
+```
 
 
 
