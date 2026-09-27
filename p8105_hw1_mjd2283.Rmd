@@ -5,6 +5,8 @@ date: "2026-09-23"
 output: github_document
 ---
 
+## Problem 1
+
 ```{r penguins}
 data("penguins", package = "palmerpenguins")
 summary(penguins)
@@ -17,21 +19,23 @@ mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
 ```
 In this dataset, the names of categories include `r levels(pull(penguins,species))`, and  `r levels(pull(penguins,island))`.
 
-The min length of bills (mm) is `r min(pull(penguins,bill_length_mm))`, and the max is `r max(pull(penguins,bill_length_mm))`
+Sex is `r levels(pull(penguins,sex))`
 
+The median length of bills is `r median(pull(penguins,bill_length_mm))` mm.
 
+The median length of flippers is `r median(pull(penguins,flipper_length_mm)` mm.
 
-`r levels(pull(penguins,bill_depth_mm))`, `r levels(pull(penguins,flipper_length_mm)`, `r levels(pull(penguins,body_mass_g))`, `r levels(pull(penguins,sex))`, `r levels(pull(penguins,year))`
+The median body mass weight is `r median(pull(penguins,body_mass_g))` g
 
-Used AI to show how to use r in line code to show names/values. r levels gets the factos in the dataset. For the numeric values, I used min and max. 
+The min year is `r min(pull(penguins,year))` and the max is `r max(pull(penguins,year))`
+
+Used AI to show how to use r in line code to show names/values. r levels gets the factors in the dataset. For the numeric values, I used median values besides year. I reported the mean flipper length below as well. 
 
 There are `r nrow(penguins)` rows and `r ncol(penguins)` columns.
 
 The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
 
 na.rm is a logical evaluating to TRUE or FALSE indicating whether NA values should be stripped before the computation proceeds. Used AI to figure out this argument usage
-
-## Problem 1
 
 ```{r}
 ## scatterplot of x and y
